@@ -43,6 +43,8 @@ def get_site_list(file_url):
 
 def site_request_check(site_list):
     for site in site_list:
+        if not (site.startswith('http')):
+            site = 'http://' + site
         try:
             with requests.get(site) as response:
                 if response.status_code == 200:
